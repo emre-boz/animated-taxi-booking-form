@@ -1,0 +1,382 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: 62.5%;
+  }
+
+  /* break browsers tap default blue */
+  :root {
+    -webkit-tap-highlight-color: transparent; /* transparent with keyword */
+    -webkit-tap-highlight-color: rgba(
+      0,
+      0,
+      0,
+      0
+    ); /* transparent with rgba */
+    -webkit-tap-highlight-color: hsla(
+      0,
+      0,
+      0,
+      0
+    ); /* transparent with hsla */
+    -webkit-tap-highlight-color: #00000000; /* transparent with hex with alpha */
+    -webkit-tap-highlight-color: #0000; /* transparent with short hex with alpha */
+  }
+
+  html,
+  body {
+    height: 100%;
+  }
+  body {
+    background-color: #f5f5f5;
+  }
+  .container {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  form {
+    display: flex;
+    width: 64rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    outline: 0.3rem solid #222251;
+    border-radius: 2rem;
+    background-color: #fefefa;
+    font-size: 2rem;
+  }
+
+  input,
+  select {
+    height: 3rem;
+    border-radius: 0.3rem;
+    padding: 0.2rem 1rem;
+    outline: 0.2rem solid #222251;
+    border: none;
+    font-size: 1.8rem;
+  }
+
+  ::placeholder {
+    font-size: 1.4rem;
+  }
+
+  .carBox {
+    padding-top: 3rem;
+    width: 86%;
+    position: relative;
+    margin: 5rem 0;
+  }
+  .car {
+    width: 28%;
+    position: relative;
+    z-index: 5;
+  }
+
+  .wheels {
+    width: 80%;
+    height: 40%;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 73%;
+    left: 7%;
+  }
+
+  .way {
+    height: 4rem;
+    position: absolute;
+    width: 106%;
+    z-index: 3;
+    bottom: -25%;
+    left: -2.7%;
+    overflow: hidden;
+  }
+  .way img {
+    height: 100%;
+  }
+
+  .apartment {
+    height: 100%;
+    position: absolute;
+    width: 9rem;
+    z-index: 2;
+    top: -45%;
+    left: 0;
+  }
+  .apartment img {
+    height: 150%;
+  }
+
+  .customer {
+    width: 8%;
+    position: absolute;
+    z-index: 4;
+    right: 0;
+    bottom: 0;
+  }
+  .customer img {
+    height: 100%;
+  }
+
+  .userInputs {
+    padding: 2rem;
+    width: 80%;
+  }
+
+  .userInputs div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  .reservationDate {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .carMove {
+    animation: carMove 3s infinite linear;
+  }
+  .moveToRight {
+    animation: wheelRight 500ms infinite;
+  }
+  .moveToLeft {
+    animation: wheelLeft 500ms infinite;
+  }
+
+  #submitButton {
+    width: 40%;
+    height: 4rem;
+    margin-bottom: 5rem;
+    cursor: pointer;
+    border: none;
+    background-color: #313175;
+    color: #fefefa;
+    border-radius: 0.5rem;
+    font-size: 2.2rem;
+  }
+  #submitButton:hover {
+    color: #222251;
+    background-color: #f7c906;
+  }
+
+  footer {
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    color: #fefefa;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 10rem;
+    background-color: #00446b;
+    font-size: clamp(1.4rem, 2vw, 2.4rem);
+  }
+
+  footer div {
+    margin-bottom: 0.5rem;
+  }
+
+  footer a {
+    color: #fefefa;
+  }
+  .author {
+    margin-bottom: 0.3rem;
+  }
+
+  .alertModal {
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.1);
+    z-index: 100;
+  }
+
+  .modal-content {
+    width: 50%;
+    border: 0.5rem solid #f75006;
+    border-radius: 2rem;
+    font-size: 2.4rem;
+    position: relative;
+    text-align: center;
+    background-color: #fff;
+    color: #1e1e24;
+    padding: 6rem;
+  }
+
+  #closeModal {
+    height: 3.6rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+    margin: 1.5rem;
+    border: none;
+    background: rgba(#1e1e24, 0.3);
+    border-radius: 50%;
+  }
+
+  #closeModal:hover {
+    background-color: #808080;
+  }
+
+  #closeModal svg {
+    height: 100%;
+    width: 100%;
+    fill: #fff;
+    pointer-events: none;
+    padding: 0.2rem;
+  }
+
+
+
+  @keyframes carMove {
+    0% {
+      transform: translateY(0px);
+    }
+    25% {
+      transform: translateY(0.5px);
+    }
+    29% {
+      transform: translateY(0.5px);
+    }
+    33% {
+      transform: translateY(0px);
+    }
+    47% {
+      transform: translateY(0px);
+    }
+    58% {
+      transform: translateY(0.5px);
+    }
+    61% {
+      transform: translateY(0.5px);
+    }
+    66% {
+      transform: translateY(0.5px);
+    }
+    75% {
+      transform: translateY(0.5px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+  @keyframes wheelRight {
+    0% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(45deg);
+    }
+    50% {
+      transform: rotate(90deg);
+    }
+    75% {
+      transform: rotate(135deg);
+    }
+    100% {
+      transform: rotate(180deg);
+    }
+  }
+
+  @keyframes wheelLeft {
+    0% {
+      transform: rotate(180deg);
+    }
+    25% {
+      transform: rotate(135deg);
+    }
+    50% {
+      transform: rotate(90deg);
+    }
+    75% {
+      transform: rotate(45deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  @media (max-width: 768px) {
+    body {
+      background-color: #fefefa;
+    }
+
+    .container {
+      display: block;
+      margin-top: 1rem;
+    }
+    form {
+      width: 100%;
+      height: 100%;
+      margin-top: 0.5rem;
+      outline: none;
+      border-radius: 0;
+      padding-top: 5rem;
+    }
+
+    .carBox {
+      width: 96%;
+    }
+
+    .userInputs {
+      width: 90%;
+    }
+
+    .modal-content {
+      width: 80%;
+      padding: 6rem 2rem;
+    }
+  }
+
+  @media (max-width: 425px) {
+    .container {
+      margin-top: 10%;
+      margin-bottom: 10%;
+    }
+    .userInputs {
+      width: 100%;
+      padding: 0.3rem;
+      justify-content: center;
+    }
+
+    .userInputs div {
+      align-items: normal;
+    }
+
+    .userInputs .reservationDate {
+      align-items: center;
+    }
+
+    .userInfo {
+      flex-direction: column;
+    }
+
+    .userInfo label {
+      margin-bottom: 1rem;
+    }
+
+    input {
+      padding: 0.5rem 0.5rem;
+    }
+  }
