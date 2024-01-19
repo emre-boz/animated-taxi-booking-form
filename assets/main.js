@@ -79,7 +79,7 @@ window.addEventListener("resize", targetPositionGenerator);
 function restrictDate() {
   let today = new Date();
   let year = today.getFullYear();
-  let month = today.getMonth();
+  let month = today.getMonth() + 1; 
   if (month < 10) {
     month = "0" + month;
   }
@@ -88,7 +88,7 @@ function restrictDate() {
     day = "0" + day;
   }
 
-  let newStartDate = `${year}-${month + 1}-${day}`;
+  let newStartDate = `${year}-${month}-${day}`;
   userReservationDate.setAttribute("min", newStartDate);
   userReservationDate.value = newStartDate;
 }
@@ -101,14 +101,15 @@ function restrictHour() {
   if (day < 10) {
     day = "0" + day;
   }
+
   let dateArr = userReservationDate.value.match(/[0-9]{1,}/g);
   console.log("day", day);
   console.log("dateArr[2]", dateArr[2]);
 
   let hour = today.getHours();
-  if (day == dateArr[2]) {
+  if (parseInt(day) === parseInt(dateArr[2])) {
     for (let i = 1; i < hours.length; i++) {
-      if (hours[i].value <= hour + 3) {
+      if (parseInt(hours[i].value) <= hour + 3) {
         hours[i].disabled = true;
       }
     }
@@ -130,11 +131,8 @@ function trueCounter(arr) {
   }
   return counter;
 }
-
 function moveForward() {
-  let carBoxWidth = carBox.offsetWidth;
-  let carWidth = car.offsetWidth;
-  let carLeft = car.offsetLeft;
+
   let itemPosition = parseInt(getComputedStyle(car).left);
   let firstStep = (targetPosition - itemPosition) % 5;
   itemPosition = itemPosition + firstStep;
@@ -173,7 +171,7 @@ function moveBackward() {
   let carWidth = car.offsetWidth;
   let carLeft = car.offsetLeft;
 
-  let add = (carBoxWidth - carWidth * 5) / 4;
+  
 
   let itemPosition = parseInt(getComputedStyle(car).left);
 
@@ -232,7 +230,7 @@ formBox.addEventListener("change", (e) => {
   } else {
     checker[3] = false;
   }
-  let positionLocation;
+ 
   if (trueCounter(checker) == 0) {
     targetPosition = targetPositions[0];
 
